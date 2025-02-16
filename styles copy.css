@@ -86,7 +86,9 @@ a:hover {
     list-style-type: disc; /* Ensures the list keeps its default style */
     
 }
-
+.hidden {
+    display: none;
+}
 .inline-list li {
     display: inline; /* Makes list items display inline */
     margin-right: 10px; /* Adds space between list items */
