@@ -7,10 +7,17 @@
     <link rel="stylesheet" href="styles copy.css">
 </head>
 <body>
-    <header>
-        <h1>How many teams are real title contenders each year ?</h1>
-    </header>
-    <section id="Intro">
+    
+    <header >
+        <h1 class="lang en">How many teams are real title contenders each year ?</h1>
+        <h1 class="lang fr hidden">Qui sont les candidats au titre chaque année?</h1>
+        
+    <div>
+        <button class="btn" onclick="toggleLanguage('en')">🇺🇸​</button>
+        <button class="btn" onclick="toggleLanguage('fr')">🇫🇷​</button>
+    </div></header>
+
+    <section id="Intro" class="lang en">
         <h2>Introduction</h2>
         <p>
             The NBA is a very competitive industry in which 30 teams give their all out on the court all year, with only one champion.
@@ -24,15 +31,36 @@
 
         </p>
         </section>
-        <section id="Normalization">
-        <h2>Choosing measures and normalization process </h2>
-        
-        <p >
+    <section id="Intro" class="lang fr hidden">
+            <h2>Introduction</h2>
+            <p>
+                La NBA est un business très compétitif dans lequel 30 équipes se donnent à fond sur le terrain toute l'année, mais une seule est couronnée championne.
+                Au début de la saison, chaque équipe a un objectif différent, en fonction de la force de son effectif. Mais combien d'entre elles peuvent réellement viser la victoire finale ?
+                <br><br>
+                Nous allons essayer de définir un seuil au-delà duquel les équipes ont peu ou pas de chances de remporter le titre, en nous basant sur les saisons NBA précédentes (à partir de 1997).
+                Est-ce toujours la meilleure équipe de saison régulière qui remporte les playoffs ? À quel point peut-on être « mauvais » et garder espoir ?
+                Et aussi, qu'en est-il des équipes de cette année ? Qui sont les vrais contenders ?
+                <br><br>
+                C'est ce que nous allons découvrir.
+    
+            </p>
+    </section>
+
+
+    <section id="Normalization">
+        <h2 class="lang en">Choosing measures and normalization process </h2>
+        <h2 class="lang fr hidden">Choix des mesures et processus de normalisation </h2>
+        <p class="lang en">
             To determine the strength of NBA teams during the regular season, we will take Offensive and Defensive ratings. Those are simple measures encapsulating how good/bad teams are on offense and defense, pretty straightforward.
             However, for year to year comparison stakes, we have to normalize our data, so here's a little explanation on the process and why we do it. 
             <br>If you are already familiar with the concept, feel free to skip to the next section.
         </p>
-        <p>
+        <p class="lang fr hidden">
+            Pour déterminer la force des équipes durant la saison régulière, nous prendrons les ratings offensifs et défensifs. Ce sont des mesures simples qui résument à quel point les équipes sont bonnes/mauvaises en attaque et en défense.
+            Cependant, pour des enjeux de comparaison d'une année sur l'autre, nous devons normaliser nos données. Voici donc une petite explication sur le processus et pourquoi nous le faisons.
+            <br>Si vous connaissez déjà le concept, n'hésitez pas à passer à la section suivante.
+        </p>
+        <p class="lang en">
             Offensive (Defensive) Ratings measure how much points a team scores (concedes) per 100 possessions.<br>
             What we want to get out of this is the relative strengths of teams, not the absolute number. It doesn't help you to know that the 1997 Bulls had a 112.4 O_RTG,
             you want to know whether it was good or not in 1997 ! What matters is this number in relation to every other teams' rating.<br><br>
@@ -46,18 +74,42 @@
             That way we can compare teams between eras on their relative dominance, and not raw numbers. 
 
         </p>
+        <p class="lang fr hidden">
+            Les ratings offensifs (défensifs) mesurent le nombre de points qu'une équipe marque (encaisse) pour 100 possessions.<br>
+            Ce que nous voulons en tirer, ce sont les forces relatives des équipes, pas le nombre absolu. Cela ne vous aide pas de savoir que les Bulls de 1997 avaient un Offensive Rating de 112.4, vous voulez savoir si c'était bon ou pas en 1997 ! Ce qui compte, c'est ce nombre par rapport à la note de toutes les autres équipes.<br><br>
+            Vous savez peut-être aussi que les offensive ratings ont grimpé en flèche au cours de la dernière décennie, en raison de multiples facteurs, notamment la révolution du 3 point.
+            Ce seul fait nous empêche de comparer les époques en termes de notes, car une bonne défense des années 2020 ressemblerait à la pire défense des années 1990 en regardant uniquement les chiffres.<br><br>
+
+            C'est là qu'intervient notre processus de normalisation, pour résoudre les deux problèmes à la fois.
+            Nous voulons transformer toutes ces ratings en une valeur qui nous aide à voir quelle équipe était une bonne attaque/défense à son époque.
+            On prend les ratings pour toutes les équipes d'une saison et on les fait rentrer dans l'intervalle O-1. La meilleure attaque obtiendra un 1, la pire obtiendra 0. Idem pour la défense.
+            <br><br>
+            De cette façon, nous pouvons comparer les équipes entre les époques sur leur domination relative, et non sur des chiffres bruts. La meilleure attaque de 1998 aura la même note que celle de 2018 (1) alors que leur nombre de points marqués pour 100 possessions sont différents.
+
+        </p>
+
+
         <div class="text-image-container">
         <img src="2025 screenshot 2.PNG" style="width: 90%;">
-        <p>
+        <p class="lang en">
             There you have the 2024-25 teams ranked based on these principles. You can observe everything we talk about : how OKC is the best defense and Cleveland the best offense.
             How bad are the Wizards relative to everyone else. <br><br>The exact numbers aren't that important, it's the position in the graph and the relative gap between teams that matter.
             And just like we hypothesized, the best team are in the top right quadrant, with good defense and offense. Yet no team seem to be the overwhelming favorite.
         </p><br>
+        <p class="lang fr hidden">
+            À gauche sont affichées les équipes de 2024-25 classées selon ces principes. Vous pouvez observer tout ce dont nous parlions : OKC est la meilleure défense et Cleveland la meilleure attaque.
+            À quel point les Wizards sont mauvais. <br><br>Les chiffres exacts ne sont pas si importants, c'est la position dans le graphique et l'écart relatif entre les équipes qui comptent.
+            Et comme nous l'avions supposé, les meilleures équipes se trouvent dans le quart supérieur droit, avec une bonne défense et une bonne attaque. Cela dit, aucune équipe ne semble être seule favorite.
+        </p><br>
         </div>
     </section>
+
+
+
     <section id="Where are the NBA Champions">
-        <h2>The NBA Champions corner</h2>
-        <p>
+        <h2 class="lang en">The NBA Champions corner</h2>
+        <h2 class="lang fr hidden">Le coin des champions</h2>
+        <p class="lang en">
             The basic hypothesis we can make after mapping teams on these axes, is that the better teams are located in the top right corner,
             beeing both good offenses and good defenses. But how good ?<br>Is it possible for a 10th defense and 10th offense to be champion ? 
             Where is the arbitrary line we draw, above which a team is a title contender ?
@@ -67,27 +119,49 @@
             Below is every team ranked on offensive and defensive ratings, for each year from 1997 to 2024.<br>
             The NBA Champions are highlighted by red Arrows, every other team is a blue dot.         
         </p>
+        <p class="lang fr hidden">
+            L'hypothèse initiale que nous pouvons faire après avoir mappé les équipes sur ces axes est que les meilleures équipes sont situées dans le coin supérieur droit,
+            étant à la fois de bonnes attaques et de bonnes défenses. Mais à quel point ?<br>Est-il possible qu'une équipe ayant la 10e défense et la 10e attaque soit championne ?
+            Où se trouve la ligne, au-dessus de laquelle une équipe est candidate au titre ?
+            
+            <br>
+            Pour répondre à cette question, le mieux que nous puissions faire est de regarder en arrière.
+            Ci-dessous, toutes les équipes sont classées selon leurs Offensive/Defensive Rating, pour chaque année de 1997 à 2024.<br>
+            Les champions NBA sont mis en évidence par des flèches rouges, toutes les autres équipes sont des points bleu. 
+        </p>
         <div class="text-image-container">
         <div class='tableauPlaceholder' id='viz1733475346115' style='position: relative'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Go&#47;GoldenChampionshipZone-NoBackground&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GoldenChampionshipZone-NoBackground&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Go&#47;GoldenChampionshipZone-NoBackground&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='fr-FR' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1733475346115');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='700px';vizElement.style.height='727px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='700px';vizElement.style.height='727px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-        <p><br>    
+        <p class="lang en"><br>    
             What we see is a confirmation of our hypothesis : there is a clear line below which there has never been a championship team !<br><br>
             Besides 2004 Pistons and 2001 Lakers (we'll go back to them in a bit), every champion is above .545 N_DRTG and .529 N_ORTG.<br>
             <br><br>We'll use that as a threshold. From now on, every team inside this corner will be labeled contender, we shall see what comes out of it. If we look at the seasons outcome through this lens, what can we learn ?
-        </p></div>
+        </p>
+        
+        <p class="lang fr hidden"><br>    
+            Ce que nous voyons est une confirmation de notre hypothèse : il existe une ligne claire en dessous de laquelle il n'y a jamais eu d'équipe championne !<br><br>
+            A part les Pistons 2004 et les Lakers 2001 (nous y reviendrons un peu plus tard), tous les champions sont au-dessus de .545 N_DRTG et .529 N_ORTG.<br>
+            <br><br>Nous allons utiliser cela comme seuil. A partir de maintenant, chaque équipe dans ce coin sera étiquetée comme prétendante au titre, nous verrons ce qui en sortira. Si nous regardons le résultat des saisons à travers ce prisme, que pouvons-nous apprendre ?
+    </p>
+    
+    </div>
     </section>
     <br><br>
     <section id="Viz_All_Years_With_CZone">
-        <h2>Revisiting all previous seasons with the Championship Corner</h2>
-        <p><br>
+        <h2 class="lang en">Revisiting all previous seasons with the Championship Corner</h2>
+        <h2 class="lang fr hidden">Revenons sur les années passées avec ce nouveau filtre</h2>
+        <p class="lang en"><br>
             What we do now is apply this filter to all seasons, to spot the contenders and identify the upsets, the overwhelming favorites that didn't win, 
             the underdogs that never really stood a chance, and all those incredible stories we can tell through this new perspective :
             <br><br>
         </p>
-        
+        <p class="lang fr hidden"><br>
+            Maintenant on peut appliquer ce filtre à toutes les saisons précédentes, pour repérer les contenders et identifier les upsets, les favoris qui n'ont pas gagné, les outsiders qui n'avaient en réalité aucune chance, et toutes ces histoires incroyables que nous pouvons raconter à travers cette nouvelle perspective :
+            <br><br>
+        </p>
         <div class="text-image-container">
         <div class='tableauPlaceholder' id='viz1736959759851' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;ContenderZone&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ContenderZone&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;ContenderZone&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='fr-FR' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1736959759851');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
         
-            <p >Here are my takeways, feel free to share yours : <br><br>
+            <p class="lang en">Here are my takeways, feel free to share yours : <br><br>
             - 2004 Pistons are real outliers ! 2004 had NO CONTENDERS <br>
             - 2007 WARRIORS ! WE BELIEVE !<br>
             - 2011 Mavs really were an underdog, they could've won before but did it past their prime<br>
@@ -97,12 +171,24 @@
             - 2021 Jazz was the most dominant regular season team not to win it all<br>
             - 2022 and 2023 were real toss-ups, but 2024 was a total annihilation<br>
             - Overall Western Conferance supremacy<br>
-        </p><br><br>
+        </p>
+        <p class="lang fr hidden">Voici mes conclusions, n'hésitez pas à partager les vôtres : <br><br>
+            - Les Pistons de 2004 sont un vrai outlier ! 2004 n'avait AUCUN CONTENDER <br>
+            - Les WARRIORS de 2007 ! WE BELIEVE !<br>
+            - Les Mavs de 2011 étaient vraiment un outsider, ils auraient pu gagner avant mais l'ont fait après leur peak<br>
+            - Les Thunder de 2013 et 2014... Tant d'opportunités gachées<br>
+            - Les Warriors de 2017 (Durant) étaient encore plus dominants que les Warriors de 2016 (73-9)<br>
+            - Les Rockets de 2018 étaient si proches<br>
+            - Le Jazz de 2021 était l'équipe la plus dominante de la saison régulière à ne pas avoir gagné<br>
+            - 2022 et 2023 ont été particulièrement ouvertes, mais 2024 a été une domination totale de la part de Boston<br>
+            
+        </p>
+        <br><br>
         </div>
     </section>
 
 
-    <section id="2025">
+    <section id="2025" class="lang en">
 
         <h2>What does it say about 2025 then ?</h2>
         <br>
@@ -116,8 +202,40 @@
             Is it too early to tell ? What team can climb back ? Do you believe in the Bucks or the Knicks ? How about healthy 76ers ? Will the Cavs crash ?<br><br>
             Stay tuned for more vizualisations like that, hope you had a good read !
         </p></div>
+        <p>
+           If you want the 2025 day to day graph, to see which team enter/leave the golden zone : click <a href="https://contenders-app.streamlit.app/">here</a>.
+        </p>
+    </section>
+    <section id="2025" class="lang fr hidden">
+
+            <h2>Qu'est ce que ça veut dire pour 2025 ?</h2>
+            <br>
+            <br>
+            <div class="text-image-container">
+            <img style="width: 90%;" src="2025 screenshot 2 with background.PNG">
+            <p>
+                <br>A ce jour (15/01/2024), nous n'avons que 4 Contenders : Boston Cleveland OKC et Memphis.
+                <br><br>
+                Est-ce cohérent avec ce que vous dit votre instinct ? Ajouteriez-vous une équipe à ce mix ? Peut-être réduiriez-vous la zone ? <br>
+                Est-ce trop tôt pour dire ? Quelle équipe peut remonter la pente ? Croyez-vous aux Bucks ou aux Knicks ? Les Cavs vont-ils s'effondrer ? <br><br>
+            </p></div>
+            <p>
+                Si vous voulez le graphique de 2025 actualisé au jour le jour, pour voir quelles équipes entrent et sortent de la golden zone : c'est <a href="https://contenders-app.streamlit.app/">ici</a> que ça se passe.
+            </p>
+        </section>    
+
 </body>
-<script src="script.js"></script>
+<script >
+    function toggleLanguage(language) {
+      // Hide all language content
+      document.querySelectorAll('.lang').forEach(element => {
+        element.classList.add('hidden');
+      });
+
+      // Show the selected language
+      document.querySelectorAll(`.${language}`).forEach(element => {
+        element.classList.remove('hidden');
+      });
+    }
+</script>
 </html>
-
-
